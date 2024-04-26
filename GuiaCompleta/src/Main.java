@@ -47,18 +47,9 @@ public class Main
                     metodos.operaciones(num1, num2);
                     System.out.println("-----------------------------------");
 
-                    //Bloque de reiniciar: (sin metodo)
-                    System.out.println("\nDesea probar otro ejercicio?\n");
-                    System.out.println("Y/N\n");
-                    scanner.nextLine();
-                    a = scanner.nextLine();
-                    if (a.equals("N") || a.equals("n"))
-                    {
-                        continuar = false;
-                    }
-                    else
-                    {
-                        choice = true; //Habilitar el inicio del bucle de Eleccion de opcion
+                    continuar = desea_continuar(); //Metodo que pregunta si quiere otro ejercicio
+                    if (continuar){
+                        choice = true; //Habilita el bucle de opcion de ejercicio
                     }
                     break;
 
@@ -69,9 +60,18 @@ public class Main
                     d1 = scanner.nextDouble();
                     System.out.println("El monto $"+d1+ " con el IVA aplicado es de $"+metodos.agregarIVA(d1));
                     System.out.println("-----------------------------------");
+
+                    continuar = desea_continuar(); //Metodo que pregunta si quiere otro ejercicio
+                    if (continuar){
+                        choice = true; //Habilita el bucle de opcion de ejercicio
+                    }
                     break;
                 case 3:
-
+                    System.out.println("Este ejercicio se queda pa luego");
+                    continuar = desea_continuar(); //Metodo que pregunta si quiere otro ejercicio
+                    if (continuar){
+                        choice = true; //Habilita el bucle de opcion de ejercicio
+                    }
 
                     break;
                 default:
@@ -81,20 +81,16 @@ public class Main
         }
     }
     //Este metodo deberiamos usar para preguntar constantemente si quiere probar otro ejercicio
-    private static boolean desea_continuar(boolean reinicio)
+    private static boolean desea_continuar()
     {
         System.out.println("\nDesea probar otro ejercicio?\n");
         System.out.println("Y/N\n");
         Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        boolean reinicio = true;
         String a = scanner.nextLine();
         if (a.equals("N") || a.equals("n"))
         {
             reinicio = false;
-        }
-        else
-        {
-            reinicio = true;
         }
         return reinicio;
     }
